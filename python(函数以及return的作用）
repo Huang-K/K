@@ -1,0 +1,67 @@
+一、函数
+
+1.1 函数的使用
+#什么是函数？封装了一段代码块，可以被重复使用多次
+#例如：数学中的三角函数
+#def 函数名（参数列表）
+#函数名称的命名规范：
+#每个单词都是小写的，单词之间用_下划线连接
+def eat():
+    print('买菜，洗菜，炒菜，吃。。')
+#函数被调用的时候，才会执行
+eat()
+
+1.2 带有参数的函数
+#带有参数的函数
+#买水 需要给钱
+#money 参数名要和参数的用处有关联，见名知意
+#1.必备函数 调用时，必须要传递参数
+def buy_water(money,name):
+    print(money,name)
+buy_water(10,'康师傅矿泉水')
+#2.缺省参数
+# 这种参数可以不用传入，如果不传入，就是默认值。如果传入，time就是传入的值
+def sleep(name,time=8):
+    print('{}睡了{}小时'.format(name,time))
+sleep('小明',12)
+#传入的参数个数不确定
+#3.不定长参数,实际上传递进来之后，是一个元组，元组中存放的是数据
+def print_number(*args):
+    print(type(args))
+    print(args)
+print_number(1,2,3,4,5,6,7,8,9)
+ 
+#传入多个关键字参数
+#4.不定长的关键字参数，实际上传入是一个字典
+def test(**kwargs):
+    print(type(kwargs))
+    print(kwargs)
+#调用时，必须按照key=value的形式传递参数
+test(name='张三',age='22')
+ 
+#如果一个函数中有必备参数，缺省参数，不定长参数，关键字不定长参数，需要注意这几个参数的先后顺序
+def total(name,age=10,*args,**kwargs):
+    print(name,age,args,kwargs)
+total('小明', 22, 1,2,3,4,5,phone=110,sex='男')
+
+1.3 return的两个作用
+#函数中return有两个作用
+#1.返回函数执行的结果
+def test1(a,b):
+    print('......')
+    return a+b
+rs = test1(100,200)
+print(rs)
+#2.结束函数的执行
+def test2(a):
+    print('-----')
+    if a == 10:
+        return
+    #return下方的代码就不会在执行了
+    print('************')
+test2(10)
+#3.在函数中，返回多个值,返回的多个值，放在一个元组里
+def test3():
+    return 1,2,3,4,5,6,7,8,9
+rs = test3()
+print(rs)
